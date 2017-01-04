@@ -2,8 +2,8 @@
 
 namespace Astrotomic\Notifynder\Senders;
 
-use Fenos\Notifynder\Builder\Notification;
 use MessageBird\Objects\Message;
+use Fenos\Notifynder\Builder\Notification;
 
 class MessageBirdSmsSender extends MessageBirdSender
 {
@@ -14,6 +14,7 @@ class MessageBirdSmsSender extends MessageBirdSender
         if (empty($message->body)) {
             $message->body = $notification->getText();
         }
+
         return $message;
     }
 }
