@@ -15,7 +15,7 @@ abstract class MessageBirdSender implements SenderContract
     protected $notifications;
 
     /**
-     * MessageBirdSmsSender constructor.
+     * MessageBirdSender constructor.
      *
      * @param array $notifications
      */
