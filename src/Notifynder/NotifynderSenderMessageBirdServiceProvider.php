@@ -2,9 +2,9 @@
 
 namespace Astrotomic\Notifynder;
 
-use Astrotomic\Notifynder\Senders\MessageBirdCallSender;
-use Astrotomic\Notifynder\Senders\MessageBirdSmsSender;
 use Illuminate\Support\ServiceProvider;
+use Astrotomic\Notifynder\Senders\MessageBirdSmsSender;
+use Astrotomic\Notifynder\Senders\MessageBirdCallSender;
 
 class NotifynderSenderMessageBirdServiceProvider extends ServiceProvider
 {
