@@ -30,8 +30,7 @@ abstract class MessageBirdSender implements SenderContract
         $store = config('notifynder.senders.messagebird.store', false);
         $client = new Client($accessKey);
         foreach ($this->notifications as $notification) {
-            $message = $this->getMessage($notification);
-            $client->messages->create($message);
+            $this->sendMessage($client, $notification);
         }
 
         if ($store) {
@@ -41,5 +40,5 @@ abstract class MessageBirdSender implements SenderContract
         return true;
     }
 
-    abstract protected function getMessage(Notification $notification);
+    abstract protected function sendMessage(Client $client, Notification $notification);
 }

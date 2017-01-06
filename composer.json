@@ -19,7 +19,9 @@
     "php": ">=5.5.0",
     "illuminate/support": "~5.0",
     "fenos/notifynder": "^4.0",
-    "messagebird/php-rest-api": "^1.6"
+    "messagebird/php-rest-api": "^1.6",
+    "astrotomic/notifynder-abstract-sms": "^1.0",
+    "astrotomic/notifynder-abstract-call": "^1.0"
   },
   "require-dev": {
     "laravel/framework": "~5.0"

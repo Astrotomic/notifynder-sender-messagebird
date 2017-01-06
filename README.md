@@ -44,17 +44,19 @@ Add the following array to `config/notifynder.php`
     'messagebird' => [
         'access_key' => '',
         'callbacks' => [
-            // https://developers.messagebird.com/start
-            // https://github.com/messagebird/php-rest-api
-            // you don't have to set the message text, by default (if empty) it is set in the sender itself
-            // just return the message, don't send it - otherwise you will get the message two times
-            'sms' => function(\MessageBird\Objects\Message $message, \Fenos\Notifynder\Models\Notification $notification) {
-                // handle the message and append the from, to and so on
-                return $message;
+            'sms' => function(\Astrotomic\Notifynder\Senders\Messages\SmsMessage $message, \Fenos\Notifynder\Models\Notification $notification) {
+                return $message
+                    ->from(...)
+                    ->to(...)
+                    ->body($notification->getText());
             },
-            'voice' => function(\MessageBird\Objects\VoiceMessage $message, \Fenos\Notifynder\Models\Notification $notification) {
-                // handle the message and append the from, to and so on
-                return $message;
+            'voice' => function(\Astrotomic\Notifynder\Senders\Messages\CallMessage $message, \Fenos\Notifynder\Models\Notification $notification) {
+                return $message
+                    ->from(...)
+                    ->to(...)
+                    ->body($notification->getText())
+                    ->lang('en-gb')
+                    ->male();
             },
         ],
         'store' => false, // wether you want to also store the notifications in database
