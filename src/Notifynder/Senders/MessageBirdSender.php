@@ -2,10 +2,10 @@
 
 namespace Astrotomic\Notifynder\Senders;
 
+use MessageBird\Client;
 use Fenos\Notifynder\Builder\Notification;
 use Fenos\Notifynder\Contracts\SenderContract;
 use Fenos\Notifynder\Contracts\SenderManagerContract;
-use MessageBird\Client;
 
 abstract class MessageBirdSender implements SenderContract
 {
