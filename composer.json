@@ -1,7 +1,7 @@
 {
   "name": "astrotomic/notifynder-sender-messagebird",
   "description": "MessageBird Sender for the Notifynder package.",
-  "keywords": ["notifications", "laravel"],
+  "keywords": ["notifications", "notifynder", "laravel", "messagebird", "sms", "call", "voice"],
   "license": "MIT",
   "authors": [
     {
