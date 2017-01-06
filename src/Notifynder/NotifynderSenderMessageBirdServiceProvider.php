@@ -2,9 +2,9 @@
 
 namespace Astrotomic\Notifynder;
 
-use Illuminate\Support\ServiceProvider;
+use Astrotomic\Notifynder\Senders\MessageBirdCallSender;
 use Astrotomic\Notifynder\Senders\MessageBirdSmsSender;
-use Astrotomic\Notifynder\Senders\MessageBirdVoiceSender;
+use Illuminate\Support\ServiceProvider;
 
 class NotifynderSenderMessageBirdServiceProvider extends ServiceProvider
 {
@@ -18,8 +18,8 @@ class NotifynderSenderMessageBirdServiceProvider extends ServiceProvider
         app('notifynder')->extend('sendMessageBirdSms', function (array $notifications) {
             return new MessageBirdSmsSender($notifications);
         });
-        app('notifynder')->extend('sendMessageBirdVoice', function (array $notifications) {
-            return new MessageBirdVoiceSender($notifications);
+        app('notifynder')->extend('sendMessageBirdCall', function (array $notifications) {
+            return new MessageBirdCallSender($notifications);
         });
     }
 }
