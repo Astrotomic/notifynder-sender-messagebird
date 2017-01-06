@@ -2,10 +2,10 @@
 
 namespace Astrotomic\Notifynder\Senders;
 
-use Astrotomic\Notifynder\Senders\Messages\SmsMessage;
 use MessageBird\Client;
 use MessageBird\Objects\Message;
 use Fenos\Notifynder\Builder\Notification;
+use Astrotomic\Notifynder\Senders\Messages\SmsMessage;
 
 class MessageBirdSmsSender extends MessageBirdSender
 {
