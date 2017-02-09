@@ -2,9 +2,9 @@
 
 namespace Astrotomic\Notifynder\Senders;
 
-use Fenos\Notifynder\Traits\SenderCallback;
 use MessageBird\Client;
 use Fenos\Notifynder\Builder\Notification;
+use Fenos\Notifynder\Traits\SenderCallback;
 use Fenos\Notifynder\Contracts\SenderContract;
 use Fenos\Notifynder\Contracts\SenderManagerContract;
 
