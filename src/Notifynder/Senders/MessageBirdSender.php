@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Notifynder\Senders;
 
+use Fenos\Notifynder\Traits\SenderCallback;
 use MessageBird\Client;
 use Fenos\Notifynder\Builder\Notification;
 use Fenos\Notifynder\Contracts\SenderContract;
@@ -9,10 +10,17 @@ use Fenos\Notifynder\Contracts\SenderManagerContract;
 
 abstract class MessageBirdSender implements SenderContract
 {
+    use SenderCallback;
+
     /**
      * @var array
      */
     protected $notifications;
+
+    /**
+     * @var array
+     */
+    protected $config;
 
     /**
      * MessageBirdSender constructor.
@@ -22,12 +30,13 @@ abstract class MessageBirdSender implements SenderContract
     public function __construct(array $notifications)
     {
         $this->notifications = $notifications;
+        $this->config = notifynder_config('senders.messagebird');
     }
 
     public function send(SenderManagerContract $sender)
     {
-        $accessKey = config('notifynder.senders.messagebird.access_key');
-        $store = config('notifynder.senders.messagebird.store', false);
+        $accessKey = $this->config['access_key'];
+        $store = $this->config['store'];
         $client = new Client($accessKey);
         foreach ($this->notifications as $notification) {
             $this->sendMessage($client, $notification);

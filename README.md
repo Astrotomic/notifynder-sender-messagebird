@@ -63,3 +63,39 @@ Add the following array to `config/notifynder.php`
     ],
 ],
 ```
+
+Register the sender callback in your `app/Providers/AppServiceProvider.php`
+
+```php
+<?php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Astrotomic\Notifynder\Senders\MessageBirdSmsSender;
+use Astrotomic\Notifynder\Senders\Messages\SmsMessage;
+use Astrotomic\Notifynder\Senders\MessageBirdCallSender;
+use Astrotomic\Notifynder\Senders\Messages\CallMessage;
+use Fenos\Notifynder\Builder\Notification;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        app('notifynder.sender')->setCallback(MessageBirdSmsSender::class, function (SmsMessage $message, Notification $notification) {
+            return $message
+                ->from('0123456789')
+                ->to('9876543210')
+                ->text($notification->getText());
+        });
+        
+        app('notifynder.sender')->setCallback(MessageBirdCallSender::class, function (CallMessage $message, Notification $notification) {
+            return $message
+                ->from('0123456789')
+                ->to('9876543210')
+                ->lang('en-us')
+                ->male()
+                ->text($notification->getText());
+        });
+    }
+}
+```

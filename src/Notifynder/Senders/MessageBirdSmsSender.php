@@ -11,7 +11,7 @@ class MessageBirdSmsSender extends MessageBirdSender
 {
     protected function sendMessage(Client $client, Notification $notification)
     {
-        $callback = config('notifynder.senders.messagebird.callbacks.sms');
+        $callback = $this->getCallback();
         $sms = call_user_func($callback, new SmsMessage(), $notification);
         $message = new Message();
         $message->originator = $sms->getOriginator();
